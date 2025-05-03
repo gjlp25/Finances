@@ -1,0 +1,107 @@
+# Cline Rules for Finance Dashboard Project
+
+## Project Patterns
+
+### Virtual Environment
+- Always use a virtual environment
+
+### MCP Servers
+- **Brave Search MCP Server**
+  - Use for web searches and local business searches
+  - Web search is preferable for general information
+  - Local search for business/location specific queries
+  - Always include the count parameter to limit results
+  - Respect rate limits of the free tier
+
+### Context7
+- **Always use the context7 MCP Server** to reference documentation for libraries of the tools used for this project.
+- For the tokens, **start with 5000** but then increase to **20000** if your first search didn't give relevant information.
+- **Only search three times maximum for any specific piece of documentation.** If you don't get what you need, use the brave MCP server to perform a wider search.
+
+### 1. File Structure
+- Keep all new files within the project root directory
+- Maintain clear separation between UI, processing, and storage components
+- Configuration files use .json format
+
+### 2. Code Style
+- Python code follows PEP 8 conventions
+- Use descriptive variable names related to financial concepts
+- Maintain clear function documentation
+- Use type hints where applicable
+- **Never create a file longer than 500 lines of code.** If a file approaches this limit, refactor by splitting it into modules or helper files.
+
+### 3. Data Processing
+- Always handle amounts as floats
+- Ensure case-insensitive string comparisons for categories
+- Validate CSV data before processing
+- Use pandas for data operations
+
+### 4. Category Management
+- Categories must be unique
+- Keywords should be specific enough to avoid false matches
+- Maintain "Uncategorized" as default category
+- Store category rules in categories.json
+
+### 5. User Interface
+- Use Streamlit's wide layout for better data visibility
+- Keep visualization colors consistent
+- Present monetary values with 2 decimal places
+- Show currency symbol (AED) with amounts
+
+## Workflow Patterns
+
+### 1. Development Process
+- Test changes with sample_bank_statement.csv
+- Verify category rules after modifications
+- Check visualization updates after data changes
+- Confirm proper error handling
+
+### 2. Error Handling
+- Validate file uploads before processing
+- Check data types in CSV columns
+- Verify JSON structure when saving categories
+- Handle missing or invalid data gracefully
+
+### 3. Performance Considerations
+- Process data in chunks for large files
+- Optimize category matching for speed
+- Minimize unnecessary state updates
+- Cache processed data when possible
+
+## Project Intelligence
+
+### 1. Known Patterns
+- Bank statements use "DD MMM YYYY" date format
+- Amounts may contain commas as thousand separators
+- Transaction details are in uppercase
+- Categories are case-sensitive in storage but case-insensitive in matching
+
+### 2. User Preferences
+- Currency displayed as AED
+- Expenses and payments shown separately
+- Categories easily accessible in dropdown
+- Visual summaries prominently displayed
+
+### 3. Critical Paths
+- File upload → Parse → Categorize → Display
+- Category creation → Rule update → Save
+- Transaction edit → Category update → Rule learning
+
+### 4. Future Considerations
+- Maintain extensibility for new features
+- Keep category system flexible
+- Allow for multi-currency support
+- Consider data export capabilities
+
+### 5. MCP Configuration
+- **Server Settings**: 
+  - Always use stdio transport type
+  - Set 60-second timeout
+  - Disable auto-approve for security
+- **API Keys**:
+  - Store securely in cline_mcp_settings.json
+  - Never expose in code or logs
+- **Error Handling**:
+  - Verify server connection before use
+  - Handle "Not connected" errors gracefully
+  - Restart VSCode if server connection issues persist
