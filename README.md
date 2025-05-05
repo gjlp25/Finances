@@ -1,67 +1,76 @@
 # Personal Finance Dashboard
 
-A Streamlit-based application for analyzing and categorizing personal banking transactions, with support for Dutch bank statements.
-
-## Overview
-
-This application helps users track and analyze their personal finances by:
-- Importing bank statements in CSV format
-- Automatically categorizing transactions
-- Providing visual expense analysis
-- Managing custom categories and rules
+Een Streamlit-gebaseerde applicatie voor persoonlijke financiën die gebruikers helpt bij het analyseren en categoriseren van banktransacties. De applicatie biedt een intuïtieve interface voor transactiebeheer, uitgaventracking en financiële visualisatie.
 
 ## Features
 
-- 📊 Transaction categorization
-- 📈 Visual expense analysis
-- 🔍 Custom category management
-- 💶 Support for Dutch bank statements
-- 💾 Persistent category rules
+- CSV bankafschriften import met ondersteuning voor:
+  - Semicolon-gescheiden bestanden
+  - YYYYMMDD datumformaat
+  - Europees nummerformaat (komma als decimaal)
+- Automatische transactie categorisatie
+- Dynamisch categoriebeheer
+- Uitgaven visualisatie met cirkeldiagrammen
+- Aparte weergaven voor uitgaven en inkomsten
+- Real-time categorie updates
+- Nederlandse interface
 
-## Project Documentation
+## Project Structure
 
-Comprehensive project documentation is maintained in the `memory-bank` directory:
-
-- [Project Brief](memory-bank/projectbrief.md) - Core requirements and goals
-- [Product Context](memory-bank/productContext.md) - Product vision and user experience
-- [System Patterns](memory-bank/systemPatterns.md) - Architecture and design patterns
-- [Technical Context](memory-bank/techContext.md) - Technical setup and dependencies
-- [Active Context](memory-bank/activeContext.md) - Current work and decisions
-- [Progress](memory-bank/progress.md) - Project status and roadmap
+```
+/
+├── main.py              # Application entry point with UI and logic
+├── categories.json      # Category configuration with keywords
+├── requirements.txt     # Project dependencies
+├── bank_statements/     # Bank statement files
+└── memory-bank/        # Project documentation
+```
 
 ## Setup
 
-1. Create a virtual environment:
+1. Create and activate a virtual environment:
 ```bash
+# Create virtual environment
 python -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate  # Unix
+# or
+venv\Scripts\activate     # Windows
 ```
 
-2. Activate the virtual environment:
-```bash
-# Windows
-venv\Scripts\activate
-# Unix
-source venv/bin/activate
-```
-
-3. Install dependencies:
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Run the application:
+3. Run the application:
 ```bash
 streamlit run main.py
 ```
 
-## Bank Statement Format
+The application will be available at http://localhost:8501
 
-The application expects CSV files with the following headers:
-```
-"Date";"Name / Description";"Account";"Counterparty";"Code";"Debit/credit";
-"Amount (EUR)";"Transaction type";"Notifications";"Resulting balance";"Tag"
-```
+## Documentation
 
-## Project Status
+All project documentation is maintained in the memory-bank directory:
 
-Currently in initial setup phase. See [Progress](memory-bank/progress.md) for detailed status.
+- [Project Brief](memory-bank/projectbrief.md) - Core requirements and goals
+- [Product Context](memory-bank/productContext.md) - Why this project exists
+- [System Patterns](memory-bank/systemPatterns.md) - Technical architecture
+- [Technical Context](memory-bank/techContext.md) - Development setup and details
+- [Active Context](memory-bank/activeContext.md) - Current work and decisions
+- [Progress](memory-bank/progress.md) - Project status and tracking
+
+## Features in Development
+
+- Advanced filtering capabilities
+- Enhanced error handling
+- Performance optimizations
+- Data validation improvements
+- Export functionality
+
+## Requirements
+
+- Python 3.x
+- See requirements.txt for package dependencies

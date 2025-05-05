@@ -1,113 +1,167 @@
 # Active Context: Personal Finance Dashboard
 
 ## Current Focus
-The project is in its initial setup phase. Core documentation and project structure have been established.
+The project has moved from initial setup to implementation phase, with core functionality operational including proper date and number format handling for Dutch bank statements.
 
 ## Recent Changes
-1. **Documentation Setup**
-   - Created project brief
-   - Established memory bank structure
-   - Defined system patterns
-   - Documented technical context
+1. **Core Implementation**
+   - Fixed date format handling for "YYYYMMDD" format
+   - Implemented proper European number format support
+   - Added Dutch language interface
+   - Set up CSV parsing with semicolon separator
+   - Implemented category management system
+   - Added visualization components
 
-2. **Initial Files**
-   - Basic project structure in place
-   - Requirements.txt created
-   - Categories.json initialized
-   - Bank statements directory setup
+2. **Features Implemented**
+   - CSV file upload and processing
+   - Category management system
+   - Transaction categorization
+   - Basic visualizations (pie charts)
+   - Expense summaries
+   - Tab-based interface for expenses and payments
+   - Date format compatibility (YYYYMMDD)
+   - European number format handling
+
+3. **Technical Implementation**
+   - Streamlit interface setup
+   - Pandas data processing
+   - Plotly visualizations
+   - JSON-based category persistence
+   - Proper date/number format handling
 
 ## Active Decisions
 
-### 1. Architecture
-- Using Streamlit for rapid development and easy deployment
-- Implementing modular design for maintainability
-- Following clear separation of concerns between UI, processing, and storage
+### 1. User Interface
+- Tab-based separation of expenses and payments
+- Interactive data editor for transaction categories
+- Real-time category updates and visualization
+- Wide layout for better data visibility
+- Dutch language throughout interface
 
 ### 2. Data Processing
 - Using pandas for CSV handling
-- Implementing European number format support
-- Planning efficient memory management for large files
+- Date parsing in YYYYMMDD format
+- European number format support (comma as decimal)
+- Automatic transaction categorization
+- Case-insensitive keyword matching
 
-### 3. User Interface
-- Developing Dutch language interface
-- Focusing on intuitive category management
-- Planning clear visualization layouts
+### 3. Category Management
+- Dynamic category addition
+- Automatic keyword learning
+- Persistent storage in categories.json
+- Maintaining "Niet Gecategoriseerd" as default
 
 ## Current Challenges
-1. **Implementation Phase**
-   - Core functionality needs to be developed
-   - Category management system to be implemented
-   - Visualization components to be created
+1. **Feature Enhancement**
+   - Optimize category matching algorithm
+   - Enhance visualization options
+   - Improve error handling
+   - Add data validation features
 
-2. **Technical Considerations**
-   - Need to handle large CSV files efficiently
-   - Implement robust error handling
-   - Ensure proper data validation
+2. **Technical Improvements**
+   - Consider caching for large datasets
+   - Optimize memory usage
+   - Enhance error messaging
+   - Add input validation
 
 ## Next Steps
 
 ### Immediate Tasks
-1. **Core Development**
-   - [ ] Implement CSV file parser
-   - [ ] Create category management system
-   - [ ] Develop transaction categorization logic
-   - [ ] Build visualization components
+1. **Enhancement**
+   - [ ] Add data validation for CSV imports
+      - Validate column headers
+      - Check date formats
+      - Verify number formats
+   - [ ] Implement more robust error handling
+      - User-friendly error messages
+      - Graceful failure handling
+      - Input validation feedback
+   - [ ] Add transaction filtering capabilities
+      - Date range filtering
+      - Amount range filtering
+      - Category filtering
+   - [ ] Enhance visualization options
+      - Time-based trends
+      - Category comparisons
+      - Budget tracking visuals
 
-2. **Testing Setup**
-   - [ ] Create test data files
-   - [ ] Set up unit testing framework
-   - [ ] Define test cases
+2. **User Experience**
+   - [ ] Add loading indicators
+   - [ ] Improve error messages
+   - [ ] Add data export functionality
+   - [ ] Implement sorting and filtering
 
-3. **User Interface**
-   - [ ] Design main layout
-   - [ ] Implement file upload functionality
-   - [ ] Create category management interface
-   - [ ] Add visualization components
+3. **Performance**
+   - [ ] Optimize large file handling
+   - [ ] Implement caching
+   - [ ] Add progress indicators
+   - [ ] Optimize category matching
 
 ### Upcoming Features
-1. **Phase 1**
-   - Basic file import
-   - Simple categorization
-   - Initial visualizations
-
-2. **Phase 2**
-   - Advanced category management
+1. **Phase 2**
+   - Advanced filtering
+   - Date range selection
    - Enhanced visualizations
+   - Export functionality
+
+2. **Phase 3**
+   - Multi-file processing
+   - Category rules management
+   - Advanced analytics
    - Performance optimizations
 
 ## Questions to Resolve
-1. How to optimize memory usage for large CSV files?
-2. What's the best approach for keyword-based categorization?
-3. How to handle edge cases in transaction data?
+1. How to optimize performance with large CSV files?
+   - Consider chunked processing
+   - Implement data streaming
+   - Optimize memory usage
+2. What additional visualizations would be useful?
+   - Monthly trend comparisons
+   - Category-wise budget tracking
+   - Income vs. expense analysis
+3. How to improve category matching accuracy?
+   - Enhanced keyword learning
+   - Pattern recognition
+   - User feedback integration
 
 ## Active Considerations
 1. **Performance**
-   - Monitor memory usage
-   - Optimize data processing
-   - Ensure responsive UI
+   - Monitor memory usage with large files
+   - Optimize category matching
+   - Consider caching strategies
 
 2. **User Experience**
-   - Keep interface intuitive
+   - Maintain interface responsiveness
    - Provide clear feedback
-   - Maintain Dutch language consistency
+   - Ensure intuitive category management
 
-3. **Data Handling**
-   - Validate input data thoroughly
-   - Handle errors gracefully
+3. **Data Quality**
+   - Validate CSV structure
+   - Handle edge cases in transactions
    - Ensure accurate categorization
 
 ## Dependencies to Track
 1. **External Libraries**
-   - Streamlit version compatibility
-   - Pandas performance
-   - NumPy requirements
+   - Streamlit 1.32.0
+   - Pandas 2.2.0
+   - Plotly 5.18.0
+   - NumPy 1.26.4
 
 2. **Project Components**
-   - CSV parser development
-   - Category system implementation
-   - Visualization module creation
+   - CSV parser functionality
+   - Category management system
+   - Visualization module
 
 ## Documentation Needs
-1. Update progress.md as features are implemented
-2. Document any technical decisions made
-3. Keep user documentation current
+1. Update user guide with date format requirements
+   - YYYYMMDD format specification
+   - European number format details
+   - Supported CSV structures
+2. Document category management workflow
+   - Category creation process
+   - Keyword management
+   - Rule learning system
+3. Add error handling documentation
+   - Common error scenarios
+   - Troubleshooting steps
+   - Data validation requirements

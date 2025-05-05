@@ -3,7 +3,8 @@
 ## Project Patterns
 
 ### Virtual Environment
-- Always use a virtual environment
+- Always use a virtual environment in visual studio code
+- Create a virtual environment for Macos and Windows. Call the venv_win and venv_mac
 
 ### MCP Servers
 - **Brave Search MCP Server**
@@ -39,8 +40,11 @@
 ### 4. Category Management
 - Categories must be unique
 - Keywords should be specific enough to avoid false matches
-- Maintain "Uncategorized" as default category
+- Maintain "Niet Gecategoriseerd" as default category (Dutch)
 - Store category rules in categories.json
+- Use case-insensitive keyword matching
+- Support dynamic category addition
+- Implement keyword learning from manual categorizations
 
 ### 5. User Interface
 - Use Streamlit's wide layout for better data visibility
@@ -71,9 +75,11 @@
 ## Project Intelligence
 
 ### 1. Known Patterns
-- Bank statements use "DD MMM YYYY" date format
-- Amounts may contain commas as thousand separators
-- Transaction details are in uppercase
+- Bank statements use YYYYMMDD date format
+- Amounts use European format (comma as decimal)
+- Bank statements are semicolon-separated CSV files
+- Column headers are in a specific order with Dutch text
+- Transaction details may be in mixed case
 - Categories are case-sensitive in storage but case-insensitive in matching
 
 ### 2. User Preferences

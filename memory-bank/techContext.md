@@ -27,9 +27,10 @@
 
 ### Core Dependencies
 ```plaintext
-streamlit       # Web application framework
-pandas         # Data processing and analysis
-numpy          # Numerical computations
+streamlit==1.32.0    # Web application framework
+pandas==2.2.0        # Data processing and analysis
+plotly==5.18.0      # Interactive visualizations
+numpy==1.26.4       # Numerical computations
 ```
 
 ### Development Dependencies
@@ -39,24 +40,28 @@ numpy          # Numerical computations
 ## File Structure
 ```
 /
-├── main.py              # Application entry point
-├── categories.json      # Category configuration
+├── main.py              # Application entry point with UI and logic
+├── categories.json      # Category configuration with keywords
 ├── requirements.txt     # Project dependencies
 ├── bank_statements/     # Bank statement files
-└── memory-bank/        # Project documentation
+│   └── NL90INGB0701483873_17-03-2025_02-05-2025.csv
+├── memory-bank/        # Project documentation
+└── venv/              # Python virtual environment
 ```
 
 ## Technical Constraints
 
 ### 1. Data Processing
 - CSV files must be semicolon-separated
-- Specific column headers required:
+- Specific column headers required and handled:
   ```
   "Date";"Name / Description";"Account";"Counterparty";"Code";
   "Debit/credit";"Amount (EUR)";"Transaction type";"Notifications";
   "Resulting balance";"Tag"
   ```
-- Amounts must handle European number format (comma as decimal)
+- Amounts handled in European format (comma as decimal)
+- Dates parsed in YYYYMMDD format
+- Case-insensitive transaction matching
 
 ### 2. Performance
 - Must handle large CSV files efficiently
@@ -82,12 +87,13 @@ numpy          # Numerical computations
 
 ### 2. Application Settings
 - Default language: Dutch
-- Currency: EUR
-- Date format: DD MMM YYYY
+- Currency: EUR (with European number format)
+- Input date format: YYYYMMDD
+- Display date format: DD/MM/YYYY
 
 ## Development Setup
 
-### 1. Initial Setup
+### 1. Virtual Environment
 ```bash
 # Create virtual environment
 python -m venv venv
@@ -104,7 +110,11 @@ pip install -r requirements.txt
 
 ### 2. Running the Application
 ```bash
+# Start the Streamlit application
 streamlit run main.py
+
+# Application will be available at:
+# http://localhost:8501
 ```
 
 ### 3. Development Commands
@@ -112,27 +122,50 @@ streamlit run main.py
 # Update dependencies
 pip freeze > requirements.txt
 
-# Run tests (when implemented)
+# Run tests (future implementation)
 python -m pytest
+```
+
+### 4. Category Management
+```bash
+# Category structure in categories.json
+{
+  "category_name": [
+    "keyword1",
+    "keyword2"
+  ]
+}
 ```
 
 ## Data Flow
 
-### 1. File Import
+### 1. File Import and Processing
 ```mermaid
 flowchart LR
     CSV[CSV File] --> Parser[Parser]
     Parser --> Validation[Validation]
-    Validation --> Processing[Processing]
+    Validation --> Clean[Clean Data]
+    Clean --> Store[Session State]
 ```
 
-### 2. Data Processing
+### 2. Transaction Processing
 ```mermaid
 flowchart TD
-    Raw[Raw Data] --> Clean[Clean Data]
-    Clean --> Categorize[Categorize]
-    Categorize --> Analyze[Analyze]
-    Analyze --> Display[Display]
+    Raw[Raw Data] --> Split[Split Credits/Debits]
+    Split --> Categorize[Categorize]
+    Categorize --> Learn[Learn Keywords]
+    Learn --> Save[Save Categories]
+    Categorize --> Display[Display]
+```
+
+### 3. User Interaction Flow
+```mermaid
+flowchart LR
+    Upload[Upload] --> Process[Process]
+    Process --> Display[Display]
+    Display --> Edit[Edit Categories]
+    Edit --> Update[Update Display]
+    Edit --> Learn[Learn Keywords]
 ```
 
 ## Security Considerations

@@ -30,6 +30,12 @@ A Streamlit-based personal finance application that helps users analyze and cate
    - The bankstatements that i get are semicolon separated csv files with the following headers:
      "Date";"Name / Description";"Account";"Counterparty";"Code";"Debit/credit";"Amount (EUR)";"Transaction type";"Notifications";"Resulting balance";"Tag"
 
+7. Multiple Bankaccounts
+   - Upload statements from multiple bankaccounts
+
+8. Budgets
+   - Monthly, Quarter, and yearly budgets
+
 ## Technical Goals
 - Maintain a simple, user-friendly interface
 - Ensure efficient transaction processing
